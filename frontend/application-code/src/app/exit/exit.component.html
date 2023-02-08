@@ -1,0 +1,26 @@
+<mat-card style="width: 37vw; margin: auto; top: 37vh">
+  <mat-card-title
+    class="margin-class"
+    style="background: #13be46; text-align: center; color: white; padding: 5px"
+    >Submission Successful
+  </mat-card-title>
+  <mat-card-subtitle class="margin-class" style="text-align: justify">
+    Your responses have been successfully submitted! Thank you for your time
+    and interest in our study.</mat-card-subtitle>
+  <mat-card-content>
+    <p class="margin-class">
+      If you have any questions or are interested in the research and want to learn more, please email us.
+      Please click on the following button to claim the reward and get back to Prolific.
+    </p>
+  </mat-card-content>
+  <mat-card-actions class="action-section" style="display: flex; justify-content: center;">
+    <button
+      mat-raised-button
+      color="primary"
+      class="submit"
+      style="max-width: 12vw;"
+      (click)="onSubmit()">
+      Claim Reward
+    </button>
+  </mat-card-actions>
+</mat-card>

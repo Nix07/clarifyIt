@@ -1,0 +1,167 @@
+@import "~@angular/material/theming";
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$candy-app-primary: mat-palette($mat-green);
+$candy-app-accent: mat-palette($mat-orange, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$candy-app-warn: mat-palette($mat-red);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as `color` or `typography`.
+$candy-app-theme: mat-light-theme(
+  (
+    color: (
+      primary: $candy-app-primary,
+      accent: $candy-app-accent,
+      warn: $candy-app-warn,
+    ),
+  )
+);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($candy-app-theme);
+
+body {
+  background-color: rgb(235, 235, 235) !important;
+  overflow-y: scroll;
+}
+
+mat-card-title {
+  font-weight: 300 !important;
+  font-size: x-large !important;
+}
+
+mat-card-header {
+  justify-content: center;
+  margin: 10px 0 10px 0 !important;
+}
+
+mat-card-content {
+  margin-bottom: 0 !important;
+}
+
+mat-form-field {
+  width: 100% !important;
+}
+
+circle {
+  stroke: grey !important;
+}
+
+h3 {
+  text-align: center !important;
+  padding: 20px !important;
+  display: block !important;
+  font-size: 30px !important;
+  font-weight: 300 !important;
+}
+
+h4 {
+  text-align: center !important;
+  padding: 20px !important;
+  display: block !important;
+}
+
+fieldset {
+  border: medium none !important;
+  padding: 0 !important;
+}
+
+.mat-button-toggle-appearance-standard .mat-button-toggle-label-content {
+  line-height: 30px !important;
+}
+
+.submit {
+  border: none;
+  color: white !important;
+  width: 100%;
+}
+
+.action-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding-right: 5px;
+  margin-bottom: 0 !important;
+}
+
+.spinner {
+  position: absolute !important;
+  top: 42%;
+  left: 47%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+
+.mat-icon-button .mat-icon {
+  font-size: 3em !important;
+}
+
+.mat-expansion-panel-header-title,
+.mat-expansion-panel-header-description {
+  margin-top: 18px !important;
+}
+
+/* Importing Bootstrap SCSS file. */
+@import "~bootstrap/scss/bootstrap";
+
+.progress {
+  background-color: #99e19a66 !important;
+  border-radius: 0 !important;
+}
+
+.margin-class {
+  margin: 10px 20px 10px 20px !important;
+}
+
+.alert {
+  text-align: center;
+}
+
+.alert-danger {
+  background-color: #ff000033;
+  color: red;
+  border-radius: 4px;
+  height: 2em;
+  line-height: 2em;
+  border: 1px dashed;
+  margin-top: -18px;
+  margin-bottom: 10px;
+}
+
+.danger-text {
+  top: -12px;
+  position: relative;
+}
+
+.section-title {
+  font-size: initial;
+  background: #2a60a5;
+  color: white;
+  width: fit-content;
+  padding: 1px 5px;
+  font-family: monospace;
+}
+
+.caution {
+  color: black;
+  font-weight: 500;
+}
+
+@media screen {
+  @page {
+    margin: 0;
+    size: 1280px 800px;
+  }
+}

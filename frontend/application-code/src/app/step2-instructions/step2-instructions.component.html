@@ -1,0 +1,53 @@
+<h3>Detailed Instructions</h3>
+
+<mat-card style="width: 55vw; margin: auto">
+  <mat-card-title class="margin-class">Instructions</mat-card-title>
+  <mat-card-subtitle class="margin-class caution">
+    Please read the following instructions carefully.
+  </mat-card-subtitle>
+
+  <mat-card-content>
+    <div class="margin-class">
+      <p class="section-title">This study consists of three steps:</p>
+      <ol>
+        <li>
+          <p style="text-align: justify">
+            In this step, an idea of a crowdsourcing task (called scenario) will be given to you. 
+            You should imagine yourself as a requester who wants to create a task based on that scenario. 
+            Therefore, you should create the first version of your crowdsourcing task (including the title and 
+            the body of the description), and then click on the button <b>Evaluate Clarity</b> to let the tool 
+            evaluate the clarity of your task description and show the scores.
+          </p>
+        </li>
+        <li>
+          <p style="text-align: justify">
+            Then, using the scores and other information provided, you need to <b>improve the task clarity</b>. 
+            You may edit or add information to the current version of your title or description. You should 
+            <b>iteratively</b> do this step, till scores are high or you are satisfied with the clarity level 
+            of your task description for crowd workers.
+          </p>
+        </li>
+        <li>
+          <p style="text-align: justify">
+            After improving the task description, click on the checkbox <b>The task description clarity 
+            is improved and complete</b> to enable the <b>Submit</b> button to proceed to the evaluation form. 
+            The versions of your task description will be saved automatically.
+          </p>
+        </li>
+      </ol>
+    </div>
+    <mat-card-actions class="action-section">
+      <button
+        mat-raised-button
+        color="primary"
+        class="submit"
+        (click)="OnSubmit()">
+        NEXT
+      </button>
+    </mat-card-actions>
+  </mat-card-content>
+</mat-card>
+
+<div *ngIf="isLoading | async">
+  <mat-spinner class="spinner"></mat-spinner>
+</div>

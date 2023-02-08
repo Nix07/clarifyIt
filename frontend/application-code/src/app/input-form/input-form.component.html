@@ -1,0 +1,79 @@
+<mat-card style="min-width: 35vw; max-width: 35vw;">
+  <mat-card-title style="margin: 10px 0"
+    >Create a crowdsourcing task</mat-card-title>
+  <p style="text-align: justify" *ngIf="category == 1">
+    <b>Your Task</b>: Please imagine yourself as a requester who has the given scenario in mind. Then, 
+    create a task description for crowd workers based on the below given scenario. Once you create the 
+    first version of your task description, you should evaluate the clarity of your task description 
+    by pressing the Evaluate Clarity button and use the scores and all other given information to improve your 
+    task clarity by adding or editing your text. You should do this step in iterations till your task 
+    description reaches a satisfactory level of clarity.
+  </p>
+  <p style="text-align: justify" *ngIf="category == 0">
+    <b>Your Task</b>: Here you can see the scenario and your task description. You should evaluate the 
+    clarity of your task description by pressing the Evaluate Clarity button and use the scores and all other 
+    given information to improve your task clarity by adding or editing your text. You should do this 
+    step in iterations till your task description reaches a satisfactory level of clarity.
+  </p>
+  <p style="text-align: justify"><b>Scenario:</b> {{ scenarioDescription }}</p>
+  <mat-card-content>
+    <form id="data" action="" method="post" [formGroup]="taskData">
+      <fieldset>
+        <mat-form-field appearance="outline">
+          <mat-label>Title*</mat-label>
+          <textarea
+            matInput
+            placeholder=""
+            rows="2"
+            formControlName="title">
+          </textarea>
+        </mat-form-field>
+        <div *ngIf="title.invalid && (title.dirty || title.touched)" class="alert alert-danger">
+          <div *ngIf="title.errors.required" class="danger-text">
+            Title field is required
+          </div>
+        </div>
+      </fieldset>
+      <fieldset>
+        <mat-form-field appearance="outline">
+          <mat-label>Description*</mat-label>
+          <textarea
+            matInput
+            placeholder=""
+            rows="8"
+            formControlName="description">
+          </textarea>
+        </mat-form-field>
+        <div *ngIf="description.invalid && (description.dirty || description.touched)" class="alert alert-danger">
+          <div *ngIf="description.errors.required" class="danger-text">
+            Description field is required
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </mat-card-content>
+  <mat-card-actions class="action-section">
+    <button
+      mat-raised-button
+      color="primary"
+      class="submit"
+      [disabled]="!taskData.valid || (isLoading | async) || finish"
+      (click)="onSubmit()">
+      Evaluate Clarity
+    </button>
+    <div style="margin-top: 1em">
+      <mat-checkbox [(ngModel)]="finish">
+        The task description clarity is improved and complete.
+      </mat-checkbox>
+      <button
+        mat-raised-button
+        color="primary"
+        class="submit"
+        [disabled]="!finish || (isLoading | async)"
+        style="margin: 0"
+        (click)="evaluationForm()">
+        SUBMIT
+      </button>
+    </div>
+  </mat-card-actions>
+</mat-card>

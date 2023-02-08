@@ -1,0 +1,86 @@
+<h3>Study Description</h3>
+
+<mat-card style="width: 55vw; margin: auto">
+  <mat-card-title class="margin-class">Welcome!</mat-card-title>
+  <mat-card-subtitle class="margin-class">
+    Please read the following descriptions and privacy statements
+    carefully.
+  </mat-card-subtitle>
+  <mat-card-content>
+    <div class="margin-class">
+      <p class="section-title">Study Description</p>
+      <p>
+        In this study, you are asked to create a crowdsourcing task description. By using a tool called 
+        ClarifyIt, you should then improve the clarity of your task description.
+      </p>
+    </div>
+
+    <div class="margin-class">
+      <p class="section-title">Acceptance Criteria</p>
+      <p>
+        Please note that your task description should be improved in iterations. In each iteration, 
+        you should use the tool to evaluate the clarity of your description and then improve it based 
+        on the information provided by the tool.
+      </p>
+    </div>
+
+    <div class="margin-class">
+      <p class="section-title">Required Time</p>
+      <p>
+        We estimate a completion time of about 15 minutes. However, the
+        system allows you to take as much as time as you need.
+      </p>
+    </div>
+
+    <div class="margin-class">
+      <p class="section-title">Data Privacy and Protection</p>
+      <p>
+        This study is anonymous. It neither ask nor collect any personal information (except education qualification).
+      </p>
+    </div>
+
+    <div class="margin-class">
+      <p class="section-title" style="background-color: red">Attention</p>
+      <p>
+        Please do not refresh at any time, as it will result in losing data.
+      </p>
+      <p>
+        For the sake of a precise analysis of time spent to complete the study, please do the 
+        study without any breaks in the middle.
+      </p>
+      <p>
+        Like most AI-based applications, our tool is not 100% accurate, we appreciate your 
+        valuable feedback in the end of the study.
+      </p>
+    </div>
+
+    <div class="margin-class" style="display: flex">
+      <p style="flex: 4; margin-top: auto">Your education level</p>
+      <mat-form-field appearance="outline" style="flex: 1">
+        <mat-select [(ngModel)]="education" required>
+          <mat-option *ngFor="let option of options" [value]="option">
+            {{ option }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <mat-checkbox class="margin-class" [(ngModel)]="accptedPrivacyPolicy">
+      I have read instructions clearfully and agree to privacy statement.
+    </mat-checkbox>
+  </mat-card-content>
+
+  <mat-card-actions class="action-section">
+    <button
+      mat-raised-button
+      color="primary"
+      class="submit"
+      [disabled]="!accptedPrivacyPolicy || !education"
+      (click)="onSubmit()">
+      Start the study
+    </button>
+  </mat-card-actions>
+</mat-card>
+<div *ngIf="isLoading | async">
+  <mat-spinner class="spinner"></mat-spinner>
+</div>

@@ -1,0 +1,184 @@
+<mat-card style="min-width: 35vw">
+  <mat-card-header>
+    <mat-card-title>Task Clarity Dimensions</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div style="display: flex; justify-content: space-around">
+      <div style="width: 83.5%">
+        <mat-progress-bar
+          mode="determinate"
+          value="{{ overallClarity }}"
+          color="{{ overallClarityColor }}"
+          style="height: 3.5em; margin-right: 10px">
+        </mat-progress-bar>
+        <span
+          style="
+            position: relative;
+            top: -25px;
+            font-weight: 500;
+            font-size: initial;
+            margin-left: 12px;
+          "
+          [ngStyle]="{
+            color: overallClarity !== 0 ? 'white' : 'black'
+          }"
+        >
+          Overall Clarity
+        </span>
+        <span
+          style="
+            position: relative;
+            top: -25px;
+            right: -83%;
+            font-size: medium;
+            font-weight: 500;">
+          {{ overallClarity + "%" }}
+        </span>
+      </div>
+      <div style="display: grid; margin-left: 3.5em">
+        <circle-progress
+          class="probability"
+          style="margin-left: 8px; margin-top: 8px"
+          percent="{{ overallClarityConfidence }}"
+          outerStrokeColor="{{ overallClarityConfidenceColor }}"
+          [radius]="15"
+          [outerStrokeWidth]="4"
+          [innerStrokeWidth]="2"
+          [space]="2"
+          [titleFontSize]="10"
+          [unitsFontSize]="9"
+          [imageHeight]="20"
+          [imageWidth]="20"
+          [animation]="true"
+          [animateTitle]="false"
+          [animationDuration]="500"
+          [showSubtitle]="false"
+          [showUnits]="true"
+          [showBackground]="false"
+          [showInnerStroke]="false"
+          [backgroundPadding]="0"
+          [toFixed]="0"
+          [maxPercent]="100"
+          [unitsFontWeight]="100"
+          [titleFontWeight]="100"
+          [subtitleFontWeight]="100"
+          matTooltip="Confidence level of AI">
+        </circle-progress>
+        <span style="font-size: x-small">AI Confidence</span>
+      </div>
+    </div>
+
+    <div style="margin-bottom: 12px">
+      <mat-expansion-panel
+        style="height: fit-content"
+        *ngFor="let featureType of featureTypes; let i = index"
+        (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false"
+        style="margin-top: 15px; min-height: 50px"
+        #mep="matExpansionPanel">
+        <mat-expansion-panel-header style="height: fit-content">
+          <mat-panel-title style="width: fit-content">
+            <span>{{ featureType }}</span>
+          </mat-panel-title>
+          <mat-panel-description style="max-width: 15em; min-width: 15em">
+            <img
+              class="helper-icon"
+              src="../../assets/images/question.png"
+              alt=""
+              width="20px"
+              height="20px"
+              (click)="descriptionClicked(i, mep)"
+              matTooltip="Definition"/>
+            <img
+              class="helper-icon"
+              src="../../assets/images/good.png"
+              alt=""
+              width="30px"
+              height="30px"
+              (click)="clearExampleClicked(i, mep)"
+              matTooltip="Good Example"
+              style="margin-top: -5px;"/>
+            <img
+              class="helper-icon"
+              src="../../assets/images/bad_example.png"
+              alt=""
+              width="30px"
+              height="30px"
+              (click)="unclearExampleClicked(i, mep)"
+              matTooltip="Bad Example"
+              style="margin-right: 10px; margin-top: -5px;"/>
+            <mat-progress-bar
+              style="height: 20px; margin-top: -8px"
+              mode="determinate"
+              value="{{ featureValues[i] }}"
+              color="{{ featureColors[i] }}">
+            </mat-progress-bar>
+          </mat-panel-description>
+          <span class="feature-value">{{ featureValues[i] + "%" }}</span>
+          <div style="display: grid">
+            <circle-progress
+              class="probability"
+              style="margin-top: 0; margin-left: 10px"
+              percent="{{ confidenceValues[i] }}"
+              [radius]="15"
+              [outerStrokeWidth]="4"
+              [innerStrokeWidth]="2"
+              [space]="2"
+              [titleFontSize]="10"
+              [unitsFontSize]="9"
+              [imageHeight]="20"
+              [imageWidth]="20"
+              outerStrokeColor="{{ confidenceColors[i] }}"
+              [animation]="true"
+              [animateTitle]="false"
+              [animationDuration]="500"
+              [showSubtitle]="false"
+              [showUnits]="true"
+              [showBackground]="false"
+              [showInnerStroke]="false"
+              [backgroundPadding]="0"
+              [toFixed]="0"
+              [maxPercent]="100"
+              [unitsFontWeight]="100"
+              [titleFontWeight]="100"
+              [subtitleFontWeight]="100"
+              matTooltip="Confidence level of AI">
+            </circle-progress>
+            <span style="font-size: x-small">AI Confidence</span>
+          </div>
+        </mat-expansion-panel-header>
+
+        <div style="max-width: 45em">
+          <div *ngIf="helperFlags[i].description">
+            <p class="description-header">Definition</p>
+            <p>
+              {{ helperTexts[i].definition }}
+            </p>
+          </div>
+          <div *ngIf="helperFlags[i].clearExample">
+            <p class="description-header">Good Example</p>
+            <div>
+              <span class="section">Title:</span
+              ><span>{{ helperTexts[i].clearExample.title }}</span>
+            </div>
+            <div style="width: 110%">
+              <span class="section">Description:</span
+              ><span>{{ helperTexts[i].clearExample.description }}</span>
+            </div>
+          </div>
+          <div *ngIf="helperFlags[i].unclearExample">
+            <p class="description-header">Bad Example</p>
+            <div>
+              <span class="section">Title:</span
+              ><span>{{ helperTexts[i].unclearExample.title }}</span>
+            </div>
+            <div style="width: 110%">
+              <span class="section">Description:</span
+              ><span>{{ helperTexts[i].unclearExample.description }}</span>
+            </div>
+          </div>
+        </div>
+      </mat-expansion-panel>
+    </div>
+  </mat-card-content>
+</mat-card>

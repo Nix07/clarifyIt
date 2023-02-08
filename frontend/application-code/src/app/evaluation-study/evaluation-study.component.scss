@@ -1,0 +1,17 @@
+fieldset {
+  margin-top: 1em;
+}
+
+mat-radio-group {
+  display: flex;
+  justify-content: space-between;
+}
+
+.spinner {
+  position: absolute !important;
+  top: 160vh;
+}
+
+ul {
+  list-style-type: none;
+}

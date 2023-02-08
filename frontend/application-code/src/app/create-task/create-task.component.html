@@ -1,0 +1,68 @@
+<h3>Create your task description</h3>
+
+<mat-card style="width: 50vw; margin: auto">
+  <mat-card-title class="margin-class">Create a crowdsouring task based on following scenario</mat-card-title>
+  <p class="margin-class" style="text-align: justify">
+    <b>Your Task</b>: Please imagine yourself as a requester who has the given scenario in mind. 
+    Then, create a task description based on the below given scenario for crowd workers.
+  </p>
+  <p class="margin-class" style="text-align: justify">
+    <b>Scenario:</b> {{ taskScenario }}
+  </p>
+  <mat-card-content>
+    <div class="margin-class">
+      <form action="" method="POST" id="data" [formGroup]="newTaskData">
+        <fieldset>
+          <mat-form-field appearance="outline">
+            <mat-label>Title*</mat-label>
+            <textarea
+              matInput
+              placeholder=""
+              rows="3"
+              formControlName="title"
+            ></textarea>
+          </mat-form-field>
+          <div
+            *ngIf="title.invalid && (title.dirty || title.touched)"
+            class="alert alert-danger">
+            <div *ngIf="title.errors.required" class="danger-text">
+              Title field is required
+            </div>
+          </div>
+        </fieldset>
+        <fieldset>
+          <mat-form-field appearance="outline">
+            <mat-label>Description*</mat-label>
+            <textarea
+              matInput
+              placeholder=""
+              rows="10"
+              formControlName="description"
+            ></textarea>
+          </mat-form-field>
+          <div *ngIf="description.invalid && (description.dirty || description.touched)"
+            class="alert alert-danger">
+            <div *ngIf="description.errors.required" class="danger-text">
+              Description field is required
+            </div>
+          </div>
+        </fieldset>
+      </form>
+      <p style="color: red; padding-bottom: 8px">* means required</p>
+    </div>
+  </mat-card-content>
+  <mat-card-actions class="action-section">
+    <button
+      mat-raised-button
+      color="primary"
+      class="submit"
+      [disabled]="!newTaskData.valid"
+      (click)="onSubmit()">
+      NEXT
+    </button>
+  </mat-card-actions>
+</mat-card>
+
+<div *ngIf="isLoading | async">
+  <mat-spinner class="spinner"></mat-spinner>
+</div>

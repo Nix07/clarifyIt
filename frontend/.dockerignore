@@ -1,0 +1,8 @@
+.vscode/
+.git/
+.gitignore
+
+/application-code/node_modules
+/node-server/node_modules
+
+/application-code/dist

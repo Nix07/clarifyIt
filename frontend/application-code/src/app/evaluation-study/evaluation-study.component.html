@@ -1,0 +1,249 @@
+<h3>Evaluation Form</h3>
+
+<mat-card style="width: 60vw; margin: auto">
+  <mat-card-title class="margin-class"
+    >Post-Study Evaluation Form</mat-card-title
+  >
+  <mat-card-subtitle class="margin-class"
+    >Please answer each of the following questions</mat-card-subtitle
+  >
+  <mat-card-content>
+    <div class="margin-class">
+      <form action="" method="POST" id="data" [formGroup]="evaluationData">
+        <fieldset>
+          <mat-form-field appearance="outline">
+            <mat-label
+              >Approximately for how many years have you been deploying
+              crowdsourcing tasks (If no experience, enter 0)?*</mat-label>
+            <input
+              type="number"
+              matInput
+              placeholder=""
+              formControlName="experience"/>
+          </mat-form-field>
+          <div *ngIf="experience.invalid && (experience.dirty || experience.touched)"
+            class="alert alert-danger">
+            <div *ngIf="experience.errors.required" class="danger-text">
+              This field is required
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <mat-form-field style="width: 100%">
+            <mat-label>List all of the crowdsourcing platforms (separated by a comma)
+              where you have deployed at least one microtask (If no experience,
+              enter NA).*</mat-label>
+            <textarea matInput formControlName="platforms"></textarea>
+          </mat-form-field>
+          <div
+            *ngIf="platforms.invalid && (platforms.dirty || platforms.touched)"
+            class="alert alert-danger">
+            <div *ngIf="platforms.errors.required" class="danger-text">
+              This field is required
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <mat-form-field style="width: 100%">
+            <mat-label>Name the platform you have used the most (If no experience, enter
+              NA).*</mat-label>
+            <textarea matInput formControlName="most_used_platform"></textarea>
+          </mat-form-field>
+          <div
+            *ngIf="most_used_platform.invalid &&
+              (most_used_platform.dirty || most_used_platform.touched)"
+            class="alert alert-danger">
+            <div *ngIf="most_used_platform.errors.required" class="danger-text">
+              This field is required
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <mat-form-field appearance="outline">
+            <mat-label>Approximately how many tasks have you deployed on your
+              most-utilized platform (If no experience, enter 0)?*</mat-label>
+            <input
+              type="number"
+              matInput
+              placeholder=""
+              formControlName="most_tasks"/>
+          </mat-form-field>
+          <div
+            *ngIf="most_tasks.invalid && (most_tasks.dirty || most_tasks.touched)"
+            class="alert alert-danger">
+            <div *ngIf="most_tasks.errors.required" class="danger-text">
+              This field is required
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset style="margin-top: 20px">
+          <label>How helpful or useless were general functionalities of the tool?*</label>
+          <mat-radio-group aria-label="Select an option" formControlName="q1">
+            <mat-radio-button value="1">Very helpful</mat-radio-button>
+            <mat-radio-button value="2">Helpful</mat-radio-button>
+            <mat-radio-button value="3">Neither helpful nor useless</mat-radio-button>
+            <mat-radio-button value="4">Useless</mat-radio-button>
+            <mat-radio-button value="5">Very useless</mat-radio-button>
+          </mat-radio-group>
+        </fieldset>
+
+        <fieldset>
+          <label>How helpful or useless were characterizations of the clarity metrics?*</label>
+          <mat-radio-group aria-label="Select an option" formControlName="q2">
+            <mat-radio-button value="1">Very helpful</mat-radio-button>
+            <mat-radio-button value="2">Helpful</mat-radio-button>
+            <mat-radio-button value="3">Neither helpful nor useless</mat-radio-button>
+            <mat-radio-button value="4">Useless</mat-radio-button>
+            <mat-radio-button value="5">Very useless</mat-radio-button>
+          </mat-radio-group>
+        </fieldset>
+
+        <fieldset>
+          <label>How helpful or useless were prediction confidence of each clarity metric?*</label>
+          <mat-radio-group aria-label="Select an option" formControlName="q3">
+            <mat-radio-button value="1">Very helpful</mat-radio-button>
+            <mat-radio-button value="2">Helpful</mat-radio-button>
+            <mat-radio-button value="3">Neither helpful nor useless</mat-radio-button>
+            <mat-radio-button value="4">Useless</mat-radio-button>
+            <mat-radio-button value="5">Very useless</mat-radio-button>
+          </mat-radio-group>
+        </fieldset>
+
+        <fieldset>
+          <label>How helpful or useless were descriptions of each clarity metric?*</label>
+          <mat-radio-group aria-label="Select an option" formControlName="q4">
+            <mat-radio-button value="1">Very helpful</mat-radio-button>
+            <mat-radio-button value="2">Helpful</mat-radio-button>
+            <mat-radio-button value="3">Neither helpful nor useless</mat-radio-button>
+            <mat-radio-button value="4">Useless</mat-radio-button>
+            <mat-radio-button value="5">Very useless</mat-radio-button>
+          </mat-radio-group>
+        </fieldset>
+
+        <fieldset>
+          <label>How helpful or useless were good examples of each clarity metric?*</label>
+          <mat-radio-group aria-label="Select an option" formControlName="q5">
+            <mat-radio-button value="1">Very helpful</mat-radio-button>
+            <mat-radio-button value="2">Helpful</mat-radio-button>
+            <mat-radio-button value="3">Neither helpful nor useless</mat-radio-button>
+            <mat-radio-button value="4">Useless</mat-radio-button>
+            <mat-radio-button value="5">Very useless</mat-radio-button>
+          </mat-radio-group>
+        </fieldset>
+
+        <fieldset>
+          <label>How helpful or useless were bad examples of each clarity metric?*</label>
+          <mat-radio-group aria-label="Select an option" formControlName="q6">
+            <mat-radio-button value="1">Very helpful</mat-radio-button>
+            <mat-radio-button value="2">Helpful</mat-radio-button>
+            <mat-radio-button value="3">Neither helpful nor useless</mat-radio-button>
+            <mat-radio-button value="4">Useless</mat-radio-button>
+            <mat-radio-button value="5">Very useless</mat-radio-button>
+          </mat-radio-group>
+        </fieldset>
+
+        <fieldset style="margin-top: 30px">
+          <label>To what extent do you agree that the tool is well-designed and easy to use?*</label>
+          <mat-radio-group aria-label="Select an option" formControlName="q7">
+            <mat-radio-button value="1">Strongly agree</mat-radio-button>
+            <mat-radio-button value="2">Agree</mat-radio-button>
+            <mat-radio-button value="3">Partly agree partly disagree</mat-radio-button>
+            <mat-radio-button value="4">Disagree</mat-radio-button>
+            <mat-radio-button value="5">Strongly disagree</mat-radio-button>
+          </mat-radio-group>
+        </fieldset>
+
+        <fieldset>
+          <label>To what extent do you agree that the scores for each clarity
+            metrics reflect the underlying problem well?*</label>
+          <mat-radio-group aria-label="Select an option" formControlName="q8">
+            <mat-radio-button value="1">Strongly agree</mat-radio-button>
+            <mat-radio-button value="2">Agree</mat-radio-button>
+            <mat-radio-button value="3">Partly agree partly disagree</mat-radio-button>
+            <mat-radio-button value="4">Disagree</mat-radio-button>
+            <mat-radio-button value="5">Strongly disagree</mat-radio-button>
+          </mat-radio-group>
+        </fieldset>
+
+        <fieldset style="margin-top: 30px">
+          <label>Which metrics did you find useful while creating the task
+            description or improving its clarity?</label>
+          <ul>
+            <li *ngFor="let dimension of dimensions; let i = index">
+              <mat-checkbox (click)="dimensionSelected(i)">
+                {{ dimension.name }}
+              </mat-checkbox>
+            </li>
+          </ul>
+        </fieldset>
+
+        <fieldset>
+          <label>To what extent do you agree that the tool makes writing task
+            descriptions more efficient (in terms of time taken)?*</label>
+          <mat-radio-group aria-label="Select an option" formControlName="q9">
+            <mat-radio-button value="1">Strongly agree</mat-radio-button>
+            <mat-radio-button value="2">Agree</mat-radio-button>
+            <mat-radio-button value="3">Partly agree partly disagree</mat-radio-button>
+            <mat-radio-button value="4">Disagree</mat-radio-button>
+            <mat-radio-button value="5">Strongly disagree</mat-radio-button>
+          </mat-radio-group>
+        </fieldset>
+
+        <fieldset>
+          <label>To what extent do you agree that the improved version of the task
+            description is clearer and more complete?*</label>
+          <mat-radio-group aria-label="Select an option" formControlName="q10">
+            <mat-radio-button value="1">Strongly agree</mat-radio-button>
+            <mat-radio-button value="2">Agree</mat-radio-button>
+            <mat-radio-button value="3">Partly agree partly disagree</mat-radio-button>
+            <mat-radio-button value="4">Disagree</mat-radio-button>
+            <mat-radio-button value="5">Strongly disagree</mat-radio-button>
+          </mat-radio-group>
+        </fieldset>
+
+        <fieldset>
+          <label>Will you use this tool for creating task descriptions in the future?*</label>
+          <mat-radio-group aria-label="Select an option" formControlName="q11">
+            <mat-radio-button value="1">Definitely yes</mat-radio-button>
+            <mat-radio-button value="2">Yes</mat-radio-button>
+            <mat-radio-button value="3">Maybe</mat-radio-button>
+            <mat-radio-button value="4">No</mat-radio-button>
+            <mat-radio-button value="5">Definitely No</mat-radio-button>
+          </mat-radio-group>
+        </fieldset>
+
+        <fieldset>
+          <mat-form-field style="width: 100%">
+            <mat-label>Please share any remarks, comments, or suggestions pertaining to
+              your experience with using the tool.</mat-label>
+            <textarea matInput formControlName="comment"></textarea>
+          </mat-form-field>
+          <div *ngIf="comment.invalid && (comment.dirty || comment.touched)"
+            class="alert alert-danger">
+            <div *ngIf="comment.errors.required" class="danger-text">
+              comment field is required
+            </div>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </mat-card-content>
+  <mat-card-actions class="action-section margin-class">
+    <button
+      mat-raised-button
+      color="primary"
+      class="submit"
+      [disabled]="!evaluationData.valid || (!isLoading | async)"
+      (click)="onSubmit()">
+      SUBMIT
+    </button>
+  </mat-card-actions>
+</mat-card>
+
+<div *ngIf="isLoading | async">
+  <mat-spinner class="spinner"></mat-spinner>
+</div>

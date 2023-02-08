@@ -1,0 +1,16 @@
+<div style="display: flex; height: 5em">
+  <h3 style="flex: 2">ClarifyIt - Clarify Your Task Description Using Provided Information</h3>
+</div>
+<div class="progressbar-container" *ngIf="isLoading | async">
+  <p style="text-align: center; color: #dc9102">
+    Scores are being computed right now. Please wait and refrain from refreshing
+    the page.
+  </p>
+</div>
+<div style="display: flex; flex-direction: row; justify-content: space-around">
+  <app-input-form></app-input-form>
+  <app-clarity-metrics></app-clarity-metrics>
+</div>
+<div *ngIf="isLoading | async">
+  <mat-spinner class="spinner"></mat-spinner>
+</div>
